@@ -41,6 +41,7 @@
     if (session.getAttribute("connecte")!=null)  //déjà connecté
     {
            out.println("<p> Bienvenu  : "+session.getAttribute("connecte")+"</a></p>");
+           out.println("<p> Vous êtes de type  : "+session.getAttribute("typeUser")+"</a></p>");
     }
 %>
 		

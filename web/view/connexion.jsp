@@ -54,7 +54,7 @@
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item"><a href="index.jsp">Home</a></li>
-							<li class="menu-item current-menu-item"><a href="connexion.jsp">Connexion</a></li>
+							<li class="menu-item current-menu-item"><a href="connexion.do?action=formulairesCnx">Connexion</a></li>
 							<li class="menu-item"><a href="review.jsp">Movie reviews</a></li>
 							<li class="menu-item"><a href="propriétaire.jsp">Propriétaire</a></li>
 							<li class="menu-item"><a href="contact.jsp">Contact</a></li>
@@ -77,47 +77,70 @@
 						  <div class="form">
       
       <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
+        <li class="tab active"><a href="#signup">Inscription</a></li>
+        <li class="tab"><a href="#login">Connexion</a></li>
       </ul>
       
       <div class="tab-content">
         <div id="signup">   
-          <h1>Sign Up for Free</h1>
+          <h1>Inscrivez-vous gratuitement</h1>
           
-          <form action="/" method="post">
+          <form action="signup.do" method="post">
           
           <div class="top-row">
             <div class="field-wrap">
               <label>
-                First Name<span class="req">*</span>
+                Nom<span class="req">*</span>
               </label>
-              <input type="text" required autocomplete="off" />
+              <input type="text" name = "nom" required autocomplete="off" />
             </div>
         
             <div class="field-wrap">
               <label>
-                Last Name<span class="req">*</span>
+                Prénom<span class="req">*</span>
               </label>
-              <input type="text" required autocomplete="off"/>
+              <input type="text" name = "prenom"  required autocomplete="off"/>
             </div>
           </div>
 
           <div class="field-wrap">
             <label>
-              Email Address<span class="req">*</span>
+              Identifiant<span class="req">*</span>
             </label>
-            <input type="email" required autocomplete="off"/>
+            <input type="text" name = "identifiant" required autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
             <label>
-              Set A Password<span class="req">*</span>
+              Mot de passe<span class="req">*</span>
             </label>
-            <input type="password" required autocomplete="off"/>
+              <input type="password" name = "motdepasse" required autocomplete="off"/>
+          </div>    
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Courriel<span class="req">*</span>
+              </label>
+              <input type="email" name = "courriel" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Téléphone<span class="req">*</span>
+              </label>
+              <input type="text" name = "tel"/>
+            </div>
+              
+             <div>
+                 <select name = "type">
+                     <option value="visiteur">Visiteur</option>
+                    <option value="propriétaire">Propriétaire de cinéma</option>
+                 </select>
+            </div>
           </div>
-          
-          <button type="submit" class="button button-block"/>Get Started</button>
+          <input type="hidden" name="action" value="signup" />
+           
+          <button type="submit" class="button button-block"/>Commencer</button>
           
           </form>
 
@@ -142,7 +165,7 @@
             <input type="password" name="password" required autocomplete="off"/>
           </div>
           <input type="hidden" name="action" value="login" /><br />
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <p class="forgot"><a href="#">Mot de passe oublié?</a></p>
           
           <button class="button button-block"/>Log In</button>
           

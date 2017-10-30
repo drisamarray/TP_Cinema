@@ -32,6 +32,12 @@ public class ControleurFrontal extends HttpServlet {
         String action = request.getParameter("action");
         if (action !=null)
         {
+            if ("signup".equals(action))
+            {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/inscription");  //redirection vers la servlet Login
+                r.forward(request, response);     
+                return;
+            }
             if ("login".equals(action))
             {
                 RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion");  //redirection vers la servlet Login

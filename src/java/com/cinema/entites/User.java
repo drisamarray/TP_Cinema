@@ -7,39 +7,45 @@ package com.cinema.entites;
 
 public class User {
 
-	private String identifiant, nom, prenom, courriel,telephone, motdepasse;
+	private String identifiant, motdepasse, nom, prenom, courriel,telephone, type;
 
         public User() {
-            this.identifiant = "";
-		//this.nom = "";
-		//this.prenom = "";
-                //this.courriel = "";
-                //this.telephone = "";
+                this.identifiant = "";
                 this.motdepasse = "";
+		this.nom = "";
+		this.prenom = "";
+                this.courriel = "";
+                this.telephone = "";
+                this.type = "";
         }
         
-	/*public User(String identifiant, String nom, String prenom, String courriel, String telephone, String motdepasse) {
+	public User(String identifiant, String motdepasse, String nom, String prenom, String courriel, String telephone, String type) {
 		this.identifiant = identifiant;
 		this.nom = nom;
 		this.prenom = prenom;
                 this.courriel = courriel;
                 this.telephone = telephone;
                 this.motdepasse = motdepasse;
-	}*/
+                this.type = type;
+	}
         
         /******************temp**********************/
-        public User(String identifiant, String motdepasse) {
+        /*public User(String identifiant, String motdepasse) {
 		this.identifiant = identifiant;
                 this.motdepasse = motdepasse;
-	}
+	}*/
         /********************************************/
 
 	
 	public String getIdentifiant() {
 		return identifiant;
 	}
-        
-        /*public String getNom() {
+
+        public String getType() {
+            return type;
+        }
+                    
+        public String getNom() {
 		return nom;
 	}
         
@@ -53,7 +59,7 @@ public class User {
         
         public String getTelephone() {
                 return telephone;
-        }*/
+        }
         
         public String getMotdepasse() {
                 return motdepasse;
@@ -63,7 +69,11 @@ public class User {
 		this.identifiant = identifiant;
 	}
         
-       /* public void setNom(String nom) {
+        public void setMotdepasse(String motdepasse) {
+		this.motdepasse = motdepasse;
+	}
+             
+        public void setNom(String nom) {
 		this.nom = nom;
 	}
         
@@ -77,11 +87,14 @@ public class User {
         
         public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}*/
-
-	public void setMotdepasse(String motdepasse) {
-		this.motdepasse = motdepasse;
 	}
-     
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        
+
+	
 
 }
