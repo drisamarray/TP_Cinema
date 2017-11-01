@@ -1,7 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/* 
+    Servlet    : Controlleur frontal
+    Created on : 2017-10-29, 19:01:15
+    Author     : Dris & Francis
+*/
+
 package com.cinema.servlets.controler;
 
 import java.io.IOException;
@@ -11,103 +13,51 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author
- */
 public class ControleurFrontal extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action !=null)
-        {
-            if ("signup".equals(action))
-            {
-                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/inscription");  //redirection vers la servlet Login
-                r.forward(request, response);     
+        if (action != null) {
+            if ("signup".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/inscription");  //redirection vers la servlet Signup
+                r.forward(request, response);
                 return;
             }
-            if ("login".equals(action))
-            {
+            if ("login".equals(action)) {
                 RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion");  //redirection vers la servlet Login
-                r.forward(request, response);     
-                return;
-            }            
-            if ("logout".equals(action))
-            {
-                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/signout");  //redirection vers la servlet Logout
-                r.forward(request, response);                
+                r.forward(request, response);
                 return;
             }
-            if ("formulairesCnx".equals(action))
-            {
-                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/view/connexion.jsp");  //redirection vers la servlet Logout
-                r.forward(request, response);                
-            }            
+            if ("logout".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/deconnexion");  //redirection vers la servlet Logout
+                r.forward(request, response);
+                return;
+            }
+            if ("update".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/modifierProfilGestionnaire");  //redirection vers la servlet AjoutCinema
+                r.forward(request, response);
+                return;
+            }
+            if ("formulairesCnx".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+                r.forward(request, response);
+            }
+            if ("formulaireGestion".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/gestionnaire");
+                r.forward(request, response);
+            }
+            if ("ajoutCinema".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/ajoutCinema");
+                r.forward(request, response);
+            }
             return;
         }
-        String  /*n1 = request.getParameter("nb1"),
-                n2 = request.getParameter("nb2"),*/
-                op = request.getParameter("operation");
-        String msg = null;
-        /*if ((n1!=null && n1.trim().equals("")) || (n2!=null && n2.trim().equals("")))
-        {
-            msg = "Vous devez donner 2 nombres et choisir une opération.";
-            request.setAttribute("message", msg);
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
-            r.forward(request, response);
-        }
-        else
-        {*/
-          char oper;
-          if (op!=null && op.length()>0)
-              oper = op.charAt(0);
-          else
-              oper = ' ';
-          RequestDispatcher r = null;
-          switch (oper)
-          {
-              case '+' :
-                  //forward vers la servlet Addition :
-                    r = this.getServletContext().getNamedDispatcher("somme");
-                    break;
-              case '-' :
-                  //forward vers la servlet Soustraction :
-                    r = this.getServletContext().getNamedDispatcher("difference");
-                    break;
-              case '*' :
-                  //forward vers la servlet Multiplication :
-                    r = this.getServletContext().getNamedDispatcher("produit");
-                    break;
-              case '/' :
-                  //forward vers la servlet Division :
-                    r = this.getServletContext().getNamedDispatcher("division");
-                    break;
-              default :
-                    msg = "Opération "+oper+" inconnue";
-                    request.setAttribute("message", msg);
-                    //forward vers la page index.jsp :
-                    r = this.getServletContext().getRequestDispatcher("/index.jsp");
-          }
-          r.forward(request, response);
-        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -120,8 +70,7 @@ public class ControleurFrontal extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -138,7 +87,6 @@ public class ControleurFrontal extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

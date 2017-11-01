@@ -119,7 +119,7 @@ label.highlight {
 	color:$white;
 }
 
-input, textarea, select{
+input, textarea{
   font-size:22px;
   display:block;
   width:100%;
@@ -135,9 +135,9 @@ input, textarea, select{
 		outline:0;
 		border-color:$main;
   }
-}
 
-textarea, select {
+
+textarea{
   border:2px solid $gray-light;
   resize: vertical;
 }

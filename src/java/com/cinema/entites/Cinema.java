@@ -1,45 +1,64 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+    Classe     : Cinema
+    Created on : 2017-10-29, 19:01:15
+    Author     : Dris & Francis
  */
 package com.cinema.entites;
 
 public class Cinema {
 
-	private String identifiant, adresse;
-        private int nb_salles;
-        public Cinema() {
-        }
-        
-	public Cinema(String identifiant, String adresse, int nb_salles) {
-		this.identifiant = identifiant;
-		this.adresse = adresse;
-		this.nb_salles = nb_salles;
-	}
+    private String idCinema, idGestionnaire, nomCinema, ville;
+    private int nb_salles;
 
-	public String getIdentifiant() {
-		return identifiant;
-	}
+    public Cinema() {
+    }
 
-	public String getAdresse() {
-		return adresse;
-	}
-        
-        public int getNb_salles() {
-		return nb_salles;
-	}
+    public Cinema(String idCinema, String idGestionnaire, String nomCinema, String ville, int nb_salles) {
+        this.idCinema = idCinema;
+        this.idGestionnaire = idGestionnaire;
+        this.nomCinema = nomCinema;
+        this.ville = ville;
+        this.nb_salles = nb_salles;
+    }
 
-	public void setIdentifiant(String identifiant) {
-		this.identifiant = identifiant;
-	}
+    public String getIdCinema() {
+        return idCinema;
+    }
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-        
-        public void setNb_salles(int nb_salles) {
-		this.nb_salles = nb_salles;
-	}
+    public String getIdGestionnaire() {
+        return idGestionnaire;
+    }
+
+    public String getNomCinema() {
+        return nomCinema;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public int getNb_salles() {
+        return nb_salles;
+    }
+
+    public void setIdCinema(String idCinema) {
+        this.idCinema = idCinema;
+    }
+
+    public void setIdGestionnaire(String idGestionnaire) {
+        this.idGestionnaire = idGestionnaire;
+    }
+
+    public void setNomCinema(String nomCinema) {
+        this.nomCinema = nomCinema;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public void setNb_salles(int nb_salles) {
+        this.nb_salles = nb_salles;
+    }
 
 }

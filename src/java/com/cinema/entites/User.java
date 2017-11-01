@@ -1,8 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* 
+    Classe     : User
+    Created on : 2017-10-29, 19:01:15
+    Author     : Dris & Francis
+*/
+
 package com.cinema.entites;
 
 public class User {
@@ -21,21 +22,13 @@ public class User {
         
 	public User(String identifiant, String motdepasse, String nom, String prenom, String courriel, String telephone, String type) {
 		this.identifiant = identifiant;
+                this.motdepasse = motdepasse;
 		this.nom = nom;
 		this.prenom = prenom;
                 this.courriel = courriel;
-                this.telephone = telephone;
-                this.motdepasse = motdepasse;
+                this.telephone = telephone;              
                 this.type = type;
 	}
-        
-        /******************temp**********************/
-        /*public User(String identifiant, String motdepasse) {
-		this.identifiant = identifiant;
-                this.motdepasse = motdepasse;
-	}*/
-        /********************************************/
-
 	
 	public String getIdentifiant() {
 		return identifiant;

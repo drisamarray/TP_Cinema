@@ -9,6 +9,7 @@ public class Film {
 
 	private String titre, description;
         private int numero, duree;
+        
         public Film() {
         }
         

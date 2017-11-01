@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/F:/Remise/TP1/TP_JavaEE/V3/TP_Cinema/web/index.jsp</file>
-            <file>file:/F:/Remise/TP1/TP_JavaEE/V3/TP_Cinema/web/view/connexion.jsp</file>
-            <file>file:/F:/Remise/TP1/TP_JavaEE/V3/TP_Cinema/src/java/com/cinema/servlets/controler/ControleurFrontal.java</file>
-            <file>file:/F:/Remise/TP1/TP_JavaEE/V3/TP_Cinema/src/java/com/cinema/jdbc/dao/implementation/UserDao.java</file>
-            <file>file:/F:/Remise/TP1/TP_JavaEE/V3/TP_Cinema/src/java/com/cinema/servlets/traitements/Signup.java</file>
-            <file>file:/F:/Remise/TP1/TP_JavaEE/V3/TP_Cinema/src/java/com/cinema/services/Encodage.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

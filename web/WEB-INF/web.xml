@@ -23,15 +23,27 @@
         <servlet-name>login</servlet-name>
         <servlet-class>com.cinema.servlets.traitements.Login</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>com.cinema.servlets.traitements.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>gestion</servlet-name>
+        <servlet-class>com.cinema.servlets.traitements.Gestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjoutCinema</servlet-name>
+        <servlet-class>com.cinema.servlets.traitements.AjoutCinema</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MiseAjourProfil</servlet-name>
+        <servlet-class>com.cinema.servlets.traitements.MiseAjourProfil</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>controleur</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>signup</servlet-name>
         <url-pattern>/inscription</url-pattern>
     </servlet-mapping>
@@ -42,6 +54,18 @@
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>gestion</servlet-name>
+        <url-pattern>/gestionnaire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjoutCinema</servlet-name>
+        <url-pattern>/ajoutCinema</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MiseAjourProfil</servlet-name>
+        <url-pattern>/modifierProfilGestionnaire</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
