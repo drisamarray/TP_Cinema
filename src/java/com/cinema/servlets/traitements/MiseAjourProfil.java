@@ -5,7 +5,7 @@
  */
 package com.cinema.servlets.traitements;
 
-import com.cinema.entites.User;
+import com.cinema.classes.User;
 import com.cinema.jdbc.Connexion;
 import com.cinema.jdbc.dao.implementation.UserDao;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class MiseAjourProfil extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         if (session == null) {
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
             return;
         }
@@ -50,7 +50,7 @@ public class MiseAjourProfil extends HttpServlet {
         }
 
         if (!valide) {
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/gestionnaire.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaire.jsp");
             r.forward(request, response);
             return;
         }

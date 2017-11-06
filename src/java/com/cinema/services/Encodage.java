@@ -1,3 +1,9 @@
+/* 
+    Classe     : Encodage servanr à encoder les données sensibles comme mot de passe
+    Created on : 2017-10-29, 18:58:03
+    Author     : Dris & Francis
+ */
+
 package com.cinema.services;
 
 import java.security.MessageDigest;

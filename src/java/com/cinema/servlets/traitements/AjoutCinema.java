@@ -3,12 +3,11 @@
     Created on : 2017-10-29, 18:58:03
     Author     : Dris & Francis
  */
-
 package com.cinema.servlets.traitements;
 
-import com.cinema.entites. Cinema;
+import com.cinema.classes.Cinema;
 import com.cinema.jdbc.Connexion;
-import com.cinema.jdbc.dao.implementation. CinemaDao;
+import com.cinema.jdbc.dao.implementation.CinemaDao;
 import com.cinema.services.Encodage;
 import java.io.IOException;
 import java.util.Random;
@@ -27,41 +26,39 @@ public class AjoutCinema extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        if (session == null)
-        {
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+        if (session == null) {
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
-            return;  
+            return;
         }
         String msg;
         boolean valide = true;
         //Les paramètres du formulaire
-        String  identifiant = (String)session.getAttribute("connecte"),
+        String identifiant = (String) session.getAttribute("connecte"),
                 nomCinema = request.getParameter("nomCinema"),
                 ville = request.getParameter("ville"),
                 nbrSalles = request.getParameter("nbrSalles");
         Random rand = new Random();
         int valeurAl = 1 + rand.nextInt(99);
-        String idcinema = identifiant+"-"+nomCinema+"-"+valeurAl;
+        String idcinema = identifiant + "-" + nomCinema + "-" + valeurAl;
 
         //Validation formulaire au cas où il y aurait un probplème avec la validation faite côté client
         if (identifiant == null || nomCinema.trim().equalsIgnoreCase("")
-            || ville.trim().equalsIgnoreCase("")
-            || nbrSalles.trim().equalsIgnoreCase("")) {
+                || ville.trim().equalsIgnoreCase("")
+                || nbrSalles.trim().equalsIgnoreCase("")) {
             msg = "Un ou plusieurs champs n'ont pas été ou ont été mal rensignés";
             request.setAttribute("messageErrorFrmCine", msg);
             valide = false;
         }
-        
-        if (!(Encodage.isInteger(nbrSalles) && Integer.parseInt(nbrSalles) <= 100 && Integer.parseInt(nbrSalles) >0 ))
-        {
+
+        if (!(Encodage.isInteger(nbrSalles) && Integer.parseInt(nbrSalles) <= 100 && Integer.parseInt(nbrSalles) > 0)) {
             msg = "Le nombre de salles doit être un entier inclus entre 1 et 100";
             request.setAttribute("messageErrorFrmCine", msg);
             valide = false;
         }
 
         if (!valide) {
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/gestionnaire.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaire.jsp");
             r.forward(request, response);
             return;
         }
@@ -72,20 +69,20 @@ public class AjoutCinema extends HttpServlet {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         Connexion.setUrl(this.getServletContext().getInitParameter("urlBd"));
-        CinemaDao dao = new  CinemaDao(Connexion.getInstance());
+        CinemaDao dao = new CinemaDao(Connexion.getInstance());
         Cinema cinema = dao.read(idcinema);
         if (cinema != null) {
             //Utilisateur inexistant
             msg = "Cinema avec le code \"" + idcinema + "\" déja existant dans la base de données";
-            request.setAttribute("messageErrorFrmCine", msg );
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/gestionnaire.jsp");
+            request.setAttribute("messageErrorFrmCine", msg);
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaire.jsp");
             r.forward(request, response);
             return;
         }
         //connexion OK Integer.parseInt(nbrSalles
-        cinema = new  Cinema(idcinema, identifiant, nomCinema, ville, Integer.parseInt(nbrSalles));
+        cinema = new Cinema(idcinema, identifiant, nomCinema, ville, Integer.parseInt(nbrSalles));
         dao.create(cinema);
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/gestionnaire.jsp");
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaire.jsp");
         msg = "Nouveau Cinéma créé avec le code : " + idcinema;
         request.setAttribute("messageConfirm", msg);
         r.forward(request, response);

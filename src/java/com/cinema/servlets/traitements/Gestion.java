@@ -3,10 +3,9 @@
     Created on : 2017-10-29, 18:58:03
     Author     : Dris & Francis
  */
-
 package com.cinema.servlets.traitements;
 
-import com.cinema.entites.User;
+import com.cinema.classes.User;
 import com.cinema.jdbc.Connexion;
 import com.cinema.jdbc.dao.implementation.UserDao;
 import java.io.IOException;
@@ -33,19 +32,19 @@ public class Gestion extends HttpServlet {
         }
         Connexion.setUrl(this.getServletContext().getInitParameter("urlBd"));
         UserDao dao = new UserDao(Connexion.getInstance());
-        User user = dao.read((String)session.getAttribute("connecte"));
+        User user = dao.read((String) session.getAttribute("connecte"));
         if (user != null && !"gestionnaire".equalsIgnoreCase(user.getType())) {
             session.invalidate();
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
             return;
         }
         //connexion OK
         session.setAttribute("proprio", user);
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/gestionnaire.jsp");
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaire.jsp");
         r.forward(request, response);
 
-        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

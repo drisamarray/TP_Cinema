@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* 
+    classe     : Générique pour implémenter DAO
+    Created on : 2017-11-04, 01:26:59
+    Author     : Dris & francis
  */
-package com.cinema.jdbc.dao;
 
-/**
- *
- * @author moumene
- */
-//import java.sql.Connection;
+package com.cinema.jdbc.dao;
 
 import java.sql.Connection;
 import java.util.List;
@@ -34,4 +30,6 @@ public abstract class Dao<T> {
 	public abstract boolean update(T x);
 	public abstract boolean delete(T x);
 	public abstract List<T> findAll();
+       // public abstract List<T> findBy(String id);
+       // public abstract List<T> findBy(int id);
 }

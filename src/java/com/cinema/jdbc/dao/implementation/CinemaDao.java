@@ -3,9 +3,10 @@
     Created on : 2017-10-29, 18:58:03
     Author     : Dris & Francis
  */
+
 package com.cinema.jdbc.dao.implementation;
 
-import com.cinema.entites.Cinema;
+import com.cinema.classes.Cinema;
 import com.cinema.services.Encodage;
 import com.cinema.jdbc.dao.Dao;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -152,5 +154,43 @@ public class CinemaDao extends Dao<Cinema> {
         } catch (SQLException exp) {
         }
         return liste;
+    }
+
+    public List<String> findByIDgestionnaire(String idGestionnaire) {
+        // TODO Auto-generated method stub
+        List<String> liste;
+        liste = new ArrayList<>();
+        PreparedStatement stm = null;
+        try {
+            stm = cnx.prepareStatement("SELECT DISTINCT NOMCINEMA FROM cinema WHERE IDGESTIONNAIRE = ?");
+            stm.setString(1, idGestionnaire);
+            ResultSet r = stm.executeQuery();
+            while (r.next()) {
+                String cinema = r.getString("NOMCINEMA");
+                liste.add(cinema);
+            }
+            r.close();
+            stm.close();
+        } catch (SQLException exp) {
+        }
+        return liste;
+    }
+
+    public int findByNomCine(String nomCinema) {
+        // TODO Auto-generated method stub
+        int nbrSalles = 1;
+        PreparedStatement stm = null;
+        try {
+            stm = cnx.prepareStatement("SELECT DISTINCT NBRSALLES FROM cinema WHERE NOMCINEMA = ?");
+            stm.setString(1, nomCinema);
+            ResultSet r = stm.executeQuery();
+            while (r.next()) {
+                nbrSalles = r.getInt("NBRSALLES");
+            }
+            r.close();
+            stm.close();
+        } catch (SQLException exp) {
+        }
+        return nbrSalles;
     }
 }

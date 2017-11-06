@@ -1,6 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* 
+    Servlet    : Login
+    Created on : 2017-10-29, 19:01:15
+    Author     : Dris & Francis
  */
 package com.cinema.servlets.traitements;
 
@@ -14,24 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Usager
- */
 public class Logout extends HttpServlet {
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //déconnexion
         HttpSession session = request.getSession(true);
-        session.invalidate();
+        //session.invalidate();
+        session.removeAttribute("connecte");
+        session.removeAttribute("typeUse");
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
         r.forward(request, response);
     }

@@ -1,11 +1,11 @@
 /* 
-    Servlet   : Signup
+    Servlet    : Signup inscription des users
     Created on : 2017-10-29, 18:58:03
     Author     : Dris & Francis
  */
 package com.cinema.servlets.traitements;
 
-import com.cinema.entites.User;
+import com.cinema.classes.User;
 import com.cinema.jdbc.Connexion;
 import com.cinema.jdbc.dao.implementation.UserDao;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class Signup extends HttpServlet {
         }
 
         if (!valide) {
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
             return;
         }
@@ -67,8 +67,8 @@ public class Signup extends HttpServlet {
         if (user != null) {
             //Utilisateur inexistant
             msg = "Utilisateur avec identifiant \"" + identifiant + "\" déja existant. Choisir un autre identifiant";
-            request.setAttribute("messageError", msg );
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            request.setAttribute("messageError", msg);
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
             return;
         }

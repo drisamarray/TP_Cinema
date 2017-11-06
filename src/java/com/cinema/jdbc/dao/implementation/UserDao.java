@@ -5,7 +5,8 @@
  */
 package com.cinema.jdbc.dao.implementation;
 
-import com.cinema.entites.User;
+import com.cinema.classes.Cinema;
+import com.cinema.classes.User;
 import com.cinema.services.Encodage;
 import com.cinema.jdbc.dao.Dao;
 import java.sql.Connection;
@@ -157,4 +158,5 @@ public class UserDao extends Dao<User> {
         }
         return liste;
     }
+
 }

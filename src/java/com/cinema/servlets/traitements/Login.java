@@ -2,11 +2,10 @@
     Servlet    : Login
     Created on : 2017-10-29, 19:01:15
     Author     : Dris & Francis
-*/
-
+ */
 package com.cinema.servlets.traitements;
 
-import com.cinema.entites.User;
+import com.cinema.classes.User;
 import com.cinema.jdbc.Connexion;
 import com.cinema.jdbc.dao.implementation.UserDao;
 import static com.cinema.services.Encodage.testPassword;
@@ -30,7 +29,7 @@ public class Login extends HttpServlet {
         if (identifiant == null || identifiant.trim().equalsIgnoreCase("")) {
             //Utilisateur inexistant
             request.setAttribute("messageError", "identifiant obligatoire");
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
             return;
         }
@@ -49,17 +48,19 @@ public class Login extends HttpServlet {
             //Utilisateur inexistant
             request.setAttribute("messageErrorCnx", "Utilisateur avec identifiant \"" + identifiant + "\" inexistant.");
             //response.sendRedirect("login.jsp");Ne fonctionne pas correctement (ie. perd le message d'erreur).
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
         } else if (!testPassword(motdepasse, user.getMotdepasse())) {
             //Mot de passe incorrect
             request.setAttribute("messageError", "Mot de passe incorrect.");
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp");
             r.forward(request, response);
         } else {
             //connexion OK
             HttpSession session = request.getSession(true);
             session.setAttribute("connecte", identifiant);
+            //String pathAffiche = this.getServletContext().getRealPath("")+"/assets/dummy";
+            //session.setAttribute("pathAffiche", pathAffiche);
             session.setAttribute("typeUser", user.getType());
             RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp");
             r.forward(request, response);
