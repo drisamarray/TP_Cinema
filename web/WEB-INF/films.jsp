@@ -2,10 +2,17 @@
     Document   : films affiche liste de films
     Created on : 2017-10-29, 18:58:03
     Author     : Dris & Francis
-                            !!!!!!!!!!!!!!!!!!! cette page n'a pas encore été traité !!!!!!!!!!!!!!!!!!!!!!
 --%>
 
 <%@include file="header.jsp" %>
+<%-- tests
+<c:if test="${!empty sessionScope.lesFilms}">
+    <c:forEach items="${sessionScope.lesFilms}" var="item">
+        <p>${item.codeFilm}<p>
+    </c:forEach>
+</c:if>
+--%>
+
 <main class="main-content">
     <div class="container">
         <div class="page">
@@ -13,7 +20,7 @@
                 <a href="index.jsp">Home</a>
                 <span>Liste des films à l'affiche</span>
             </div>
-
+<!-- a trairer plus tard : remplir les balises avec des req ajax et implémenter filtre par cinéma, genre et ville
             <div class="filters">
                 <select name="#" id="#" placeholder="Choose Category">
                     <option value="#">Action</option>
@@ -28,49 +35,20 @@
                     <option value="#">2014</option>
                 </select>
             </div>
-            <div class="movie-list">
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-3.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">Maleficient</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-4.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">The adventure of Tintin</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-5.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">Hobbit</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-6.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">Exists</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-1.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">Drive hard</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-2.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">Robocop</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-7.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">Life of Pi</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-                <div class="movie">
-                    <figure class="movie-poster"><img src="./assets/dummy/thumb-8.jpg" alt="#"></figure>
-                    <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm">The Colony</a></div>
-                    <p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-                </div>
-            </div> <!-- .movie-list -->
+Fin a trairer plus tard -->
 
+            <div class="movie-list">
+                <c:forEach items="${sessionScope.lesFilms}" var="item">
+                    <div class="movie">
+                        <figure class="movie-poster"><img src="./assets/dummy/${item.getAffiche()}" alt="#"></figure>
+                        <div class="movie-title"><a href="afficherUnFilm.do?action=detailsFilm&codeFilm=${item.getCodeFilm()}">${item.getTitre()}</a></div>
+                        <p>${item.getDescription()}</p>
+                    </div>
+               </c:forEach> 
+          
+            </div> <!-- .movie-list -->
+            
+<!-- a trairer plus tard : pagination
             <div class="pagination">
                 <a href="#" class="page-number prev"><i class="fa fa-angle-left"></i></a>
                 <span class="page-number current">1</span>
@@ -80,6 +58,8 @@
                 <a href="#" class="page-number">5</a>
                 <a href="#" class="page-number next"><i class="fa fa-angle-right"></i></a>
             </div>
+Fin a trairer plus tard -->
+
         </div>
     </div> <!-- .container -->
 </main>

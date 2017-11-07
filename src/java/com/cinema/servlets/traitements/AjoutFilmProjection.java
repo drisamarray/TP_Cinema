@@ -75,7 +75,7 @@ public class AjoutFilmProjection extends HttpServlet {
         /*Random rand = new Random();
         int valeurAl = 1 + rand.nextInt(99);
         String codeFilm = titre+"-"+realisateur+"-"+acteurs+valeurAl;*/
-        String codeProjection = codeFilm + "-" + numSalle + "-" + du + "-" + au;
+        String codeProjection = codeFilm + "-" + cinema + "-" + numSalle + "-" + du + "-" + au;
         for (String genre : genres) {
             lesgenres += genre + " ";
         }
@@ -105,10 +105,14 @@ public class AjoutFilmProjection extends HttpServlet {
             //Film existant
             msg = "Film avec le code \"" + codeFilm + "\" déja existant dans la base de données";
             request.setAttribute("messageErrorFrmFilmProjection", msg);
-            RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaireInfos.jsp");
-            r.forward(request, response);
-            return;
+            //RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaireInfos.jsp");
+            //r.forward(request, response);
+            //return;
+        } else {
+            film = new Film(codeFilm, lesgenres, titre, realisateur, acteurs, description, affiche);
+            daoF.create(film); 
         }
+        
         Projection projection = daoP.read(codeProjection);
         if (projection != null) {
             //Film existant
@@ -118,13 +122,11 @@ public class AjoutFilmProjection extends HttpServlet {
             r.forward(request, response);
             return;
         }
-
-        film = new Film(codeFilm, lesgenres, titre, realisateur, acteurs, description, affiche);
-        daoF.create(film);
+    
         projection = new Projection(codeProjection, codeFilm, cinema, lesseances, Integer.parseInt(numSalle), du, au);
         daoP.create(projection);
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/gestionnaireInfos.jsp");
-        msg = "Nouveau Film créé" + newLine + "Nouvelle projection du " + du + "au" + au;
+        msg = "Film ajouté. Nouvelle projection du " + du + "  au " + au;
         request.setAttribute("messageConfirm", msg);
         r.forward(request, response);
     }

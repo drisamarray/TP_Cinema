@@ -13,14 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+//import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +32,9 @@ public class UploadAffiches extends HttpServlet {
         String titre = request.getParameter("titreFilm"),
                 realisateur = request.getParameter("realisateur"),
                 acteurs = request.getParameter("acteurs");
-        Random rand = new Random();
-        int valeurAl = 1 + rand.nextInt(99);
-        String codeFilm = titre + "-" + realisateur + "-" + acteurs + valeurAl;
+        //Random rand = new Random();
+        //int valeurAl = 1 + rand.nextInt(99);
+        String codeFilm = titre.trim() + "-" + realisateur.trim() + "-" + acteurs.trim();// + valeurAl;
 
         final PrintWriter writer = response.getWriter();
         final Part filePart = request.getPart("imageaffiche");
@@ -50,7 +46,6 @@ public class UploadAffiches extends HttpServlet {
 
         try {
             out = new FileOutputStream(new File(path + File.separator + fileName));
-            //out = new FileOutputStream(new File(path + File.separator+"data.dat"));
 
             filecontent = filePart.getInputStream();
 

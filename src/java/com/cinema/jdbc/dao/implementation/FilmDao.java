@@ -153,4 +153,23 @@ public class FilmDao extends Dao<Film> {
         }
         return liste;
     }
+    
+    public List<Film> findFilmsProjetes(){
+        List<Film> liste;
+        liste = new LinkedList<>();
+        try {
+            Statement stm = cnx.createStatement();
+            ResultSet r = stm.executeQuery("SELECT film.CODEFILM, film.GENRE, film.TITRE, film.REALISATEUR, film.ACTEURS, film.DESCRIPTION, film.AFFICHE FROM film, projection WHERE film.CODEFILM = projection.CODEFILM and NOW() < `projection`.`AU` ORDER BY AU ASC");
+            //ResultSet r = stm.executeQuery("SELECT * FROM  film");
+            while (r.next()) {
+                Film film = new Film(r.getString("CODEFILM"), r.getString("GENRE"),
+                        r.getString("TITRE"), r.getString("REALISATEUR"), r.getString("ACTEURS"), r.getString("DESCRIPTION"), r.getString("AFFICHE"));
+                liste.add(film);
+            }
+            r.close();
+            stm.close();
+        } catch (SQLException exp) {
+        }
+        return liste;
+    }
 }

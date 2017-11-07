@@ -64,13 +64,15 @@
                                 <select class="form-control" name="genres" multiple="true" id="genres" required="required" aria-required="true">
                                     <option disabled="null" selected="null">Genres du film</option>
                                     <option value="Action" id="action">Action</option>
-                                    <option value="Drame" id="drame">Drame/Romance</option>
-                                    <option value="Aventure" id="aventure">Aventure</option>
-                                    <option value="Comédie" id="aventure">Aventure</option>
-                                    <option value="Musicla" id="aventure">Aventure</option>
+                                    <option value="Animation" id="anime">Animation</option>
+                                    <option value="Aventure" id="aventure">Aventure</option
+                                    <option value="Comedie" id="aventure">Comedie</option>
+                                    <option value="Drame" id="drame">Drame</option>
+                                    <option value="Epouvante" id="horreur">Épouvante</option>
+                                    <option value="Famille" id="anime">Famille</option>                                     
+                                    <option value="Musicla" id="aventure">Musical</option>
+                                    <option value="Romance" id="drame">Romance</option>
                                     <option value="Thriller" id="thriller">Thriller</option>
-                                    <option value="Animation/Famille" id="anime">Animation - Famille</option>
-                                    <option value="Horreur/Épouvante" id="horreur">Horreur/Épouvante</option>
                                 </select>
                             </div>
                             <div class="fb-text form-group field-realisateur">
@@ -95,22 +97,22 @@
                                 </select>
                             </div>
                             <div class="fb-date form-group field-datedebut">
-                                <input placeholder="Projeté à partir du : " class="form-control" name="datedebut" id="datedebut" title="Période de projection" required="required" aria-required="true" type="date">
+                                <input placeholder="Projeté à partir du : (AAAA-MM-JJ)" class="form-control" name="datedebut" id="datedebut" title="Période de projection" required="required" aria-required="true" type="date">
                             </div>
                             <div class="fb-date form-group field-datefin">                               
-                                <input placeholder="Jusqu'au :" class="form-control" name="datefin" id="datefin" title="Période de projection" required="required" aria-required="true" type="date">
+                                <input placeholder="Jusqu'au : (AAAA-MM-JJ)" class="form-control" name="datefin" id="datefin" title="Période de projection" required="required" aria-required="true" type="date">
                             </div>
 
                             <div class="fb-select form-group field-seance">                                
                                 <select class="form-control" name="seances" multiple="true" id="seance" required="required" aria-required="true">
                                     <option disabled="null" selected="null">Séance de projection</option>
-                                    <option value="S1" id="S1">14h-17h Semaine</option>
-                                    <option value="S2" id="S2">16h-19h Semaine</option>
-                                    <option value="S3" id="S3">18h-21h Semaine</option>
-                                    <option value="S4" id="S4">20h-23h Semaine</option>
-                                    <option value="S5" id="S5">22h-01h Semaine</option>
-                                    <option value="W1" id="W1">10h-13h Weekend</option>
-                                    <option value="W2" id="W2">12h-15h Weekend</option>
+                                    <option value="14h-17h Semaine" id="S1">14h-17h Semaine</option>
+                                    <option value="16h-19h Semaine" id="S2">16h-19h Semaine</option>
+                                    <option value="18h-21h Semaine" id="S3">18h-21h Semaine</option>
+                                    <option value="20h-23h Semaine" id="S4">20h-23h Semaine</option>
+                                    <option value="22h-01h Semaine" id="S5">22h-01h Semaine</option>
+                                    <option value="10h-13h Weekend" id="W1">10h-13h Weekend</option>
+                                    <option value="12h-15h Weekend" id="W2">12h-15h Weekend</option>
                                 </select>
                             </div>
 

@@ -20,6 +20,11 @@ public class ControleurFrontal extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action != null) {
+            if ("charger".equals(action)) {
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/chargementInitial");  //redirection vers la servlet Signup
+                r.forward(request, response);
+                return;
+            }
             if ("signup".equals(action)) {
                 RequestDispatcher r = this.getServletContext().getRequestDispatcher("/inscription");  //redirection vers la servlet Signup
                 r.forward(request, response);
@@ -69,8 +74,7 @@ public class ControleurFrontal extends HttpServlet {
                 r.forward(request, response);
             }
             if ("detailsFilm".equals(action)) {
-                /*!!!!!!!!!!!!!!!!!!!! traitement pas encore fait !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/WEB-INF/single.jsp");
+                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/afficheDetailsFilm");
                 r.forward(request, response);
             }
             if ("contacter".equals(action)) {

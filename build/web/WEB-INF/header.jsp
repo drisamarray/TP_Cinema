@@ -30,16 +30,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>       
         <script rel="stylesheet" href="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
-
-
-
         <!-- Loading main css file -->
         <link rel="stylesheet" href="assets/css/style.css">
 
     </head>
 
-<!-- Partie À retirer : pour les tests -->
+
     <body>
+        <%-- <!-- Partie À retirer : pour les tests -->
         <%
             if (request.getAttribute("mdpBD") != null) {
                 out.println("<p> mdpBD : " + request.getAttribute("mdpBD") + "</a></p>");
@@ -53,7 +51,7 @@
                 out.println("<p> Vous êtes de type  : " + session.getAttribute("typeUser") + "</a></p>");
             }
         %>
-<!-- Fin retirer -->
+        --%> <!-- Fin retirer -->
 
 
         <div id="site-content">

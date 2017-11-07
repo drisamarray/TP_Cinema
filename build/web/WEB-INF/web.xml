@@ -51,6 +51,14 @@
         <servlet-name>UploadAffcihes</servlet-name>
         <servlet-class>com.cinema.servlets.traitements.UploadAffiches</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Chargement</servlet-name>
+        <servlet-class>com.cinema.servlets.traitements.Chargement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficheDetailsFilm</servlet-name>
+        <servlet-class>com.cinema.servlets.traitements.AfficheDetailsFilm</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controleur</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -90,6 +98,14 @@
     <servlet-mapping>
         <servlet-name>UploadAffcihes</servlet-name>
         <url-pattern>/uploaderAffiches</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Chargement</servlet-name>
+        <url-pattern>/chargementInitial</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficheDetailsFilm</servlet-name>
+        <url-pattern>/afficheDetailsFilm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

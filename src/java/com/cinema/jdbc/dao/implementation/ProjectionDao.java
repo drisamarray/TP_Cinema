@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -142,6 +143,27 @@ public class ProjectionDao extends Dao<Projection> {
         try {
             Statement stm = cnx.createStatement();
             ResultSet r = stm.executeQuery("SELECT * FROM  projection");
+            while (r.next()) {
+                Projection projection = new Projection(r.getString("CODEPROJECTION"), r.getString("CODEFILM"), r.getString("CODECINEMA"),
+                        r.getString("SEANCE"), r.getInt("NUMSALLE"), r.getString("DU"), r.getString("AU"));
+                liste.add(projection);
+            }
+            r.close();
+            stm.close();
+        } catch (SQLException exp) {
+        }
+        return liste;
+    }
+    
+    public List<Projection> findByCodeFilm(String codeFilm) {
+        // TODO Auto-generated method stub
+        List<Projection> liste;
+        liste = new ArrayList<>();
+        PreparedStatement stm = null;
+        try {
+            stm = cnx.prepareStatement("SELECT * FROM projection WHERE CODEFILM = ? ORDER BY AU ASC");
+            stm.setString(1, codeFilm);
+            ResultSet r = stm.executeQuery();
             while (r.next()) {
                 Projection projection = new Projection(r.getString("CODEPROJECTION"), r.getString("CODEFILM"), r.getString("CODECINEMA"),
                         r.getString("SEANCE"), r.getInt("NUMSALLE"), r.getString("DU"), r.getString("AU"));
